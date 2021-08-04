@@ -19,4 +19,7 @@ class MyConstant{
   static String routeDriverRegister= 'driver_register';
   static String routeDriverProfile= 'driver_profile';
   static String routeDriverMap= 'driver_map';
+
+  //Image
+  static String image1 = 'images/Image1.png';
 }
