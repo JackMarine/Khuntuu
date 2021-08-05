@@ -11,6 +11,8 @@ class Authen extends StatefulWidget {
 }
 
 class _AuthenState extends State<Authen> {
+  bool statusRedEye = true;
+
   @override
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
@@ -18,11 +20,76 @@ class _AuthenState extends State<Authen> {
       body: SafeArea(
         child: ListView(
           children: [
-          buildImage(size), 
-          buildAppName()
+            buildImage(size),
+            buildAppName(),
+            buildUser(size),
+            buildPassword(
+              size,
+            )
           ],
         ),
       ),
+    );
+  }
+
+  Row buildUser(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 16),
+          width: size * 0.6,
+          child: TextFormField(
+            decoration: InputDecoration(
+              labelStyle: MyConstant().h3Style(),
+              labelText: 'User Name',
+              prefixIcon: Icon(
+                Icons.account_circle,
+                color: MyConstant.dark,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: MyConstant.dark),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: MyConstant.font1),
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row buildPassword(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 16),
+          width: size * 0.6,
+          child: TextFormField(
+            obscureText:statusRedEye,
+            decoration: InputDecoration(
+              labelStyle: MyConstant().h3Style(),
+              labelText: 'Password',
+              prefixIcon: Icon(
+                Icons.lock_outline,
+                color: MyConstant.dark,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: MyConstant.dark),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: MyConstant.font1),
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -32,7 +99,7 @@ class _AuthenState extends State<Authen> {
       children: [
         ShowTitle(
           title: MyConstant.appName,
-          textStyle: MyConstant().h4Style(),
+          textStyle: MyConstant().h2Style(),
         ),
       ],
     );
@@ -42,10 +109,7 @@ class _AuthenState extends State<Authen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          width: size*0.6, 
-          child: ShowImage(path: MyConstant.image1)
-          ),
+        Container(width: size * 0.6, child: ShowImage(path: MyConstant.image1)),
       ],
     );
   }

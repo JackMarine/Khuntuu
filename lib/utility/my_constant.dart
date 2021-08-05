@@ -25,7 +25,7 @@ class MyConstant{
 
   //Color
   static Color primary = Color(0xff3f51b5);
-  static Color dark = Color(0xff002984);
+  static Color dark = Color(0xff000000);
   static Color light = Color(0xff757de8);
   static Color font1 = Color(0xff9ea7aa);
   //Style
