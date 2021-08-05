@@ -70,8 +70,24 @@ class _AuthenState extends State<Authen> {
           margin: EdgeInsets.only(top: 16),
           width: size * 0.6,
           child: TextFormField(
-            obscureText:statusRedEye,
+            obscureText: statusRedEye,
             decoration: InputDecoration(
+              suffixIcon: IconButton(
+                onPressed: () {
+                  setState(() {
+                    statusRedEye = !statusRedEye;
+                  });
+                },
+                icon: statusRedEye
+                    ? Icon(
+                        Icons.remove_red_eye_outlined,
+                        color: MyConstant.dark,
+                      )
+                    : Icon(
+                        Icons.remove_red_eye,
+                        color: MyConstant.dark,
+                      ),
+              ),
               labelStyle: MyConstant().h3Style(),
               labelText: 'Password',
               prefixIcon: Icon(
