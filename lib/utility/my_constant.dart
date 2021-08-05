@@ -22,4 +22,34 @@ class MyConstant{
 
   //Image
   static String image1 = 'images/Image1.png';
+
+  //Color
+  static Color primary = Color(0xff3f51b5);
+  static Color dark = Color(0xff002984);
+  static Color light = Color(0xff757de8);
+  static Color font1 = Color(0xff9ea7aa);
+  //Style
+  //ตัวใหญ่
+  TextStyle h1Style()=>TextStyle( 
+      fontSize: 24,
+      color: dark,
+      fontWeight: FontWeight.bold,  
+  );
+  //หัวข้อ
+  TextStyle h2Style()=>TextStyle( 
+      fontSize: 18,
+      color: dark,
+      fontWeight: FontWeight.w700,  
+  );
+  //Body
+  TextStyle h3Style()=>TextStyle( 
+      fontSize: 14,
+      color: dark,
+      fontWeight: FontWeight.normal,  
+  );
+    TextStyle h4Style()=>TextStyle( 
+      fontSize: 30,
+      color: font1,
+      fontWeight: FontWeight.bold,  
+  );
 }

@@ -25,7 +25,7 @@ final Map<String , WidgetBuilder> map = {
   'finished' :(BuildContext context)=>Finished(),
   'driver_register' :(BuildContext context)=>DriverRegister(),
   'driver_profile' :(BuildContext context)=>DriverProfile(),
-    'driver_map' :(BuildContext context)=>DriverMap(),
+  'driver_map' :(BuildContext context)=>DriverMap(),
 };
 
 String? initialRoute;

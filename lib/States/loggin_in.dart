@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:khuntuu/utility/my_constant.dart';
 import 'package:khuntuu/widgets/show_image.dart';
+import 'package:khuntuu/widgets/show_title.dart';
 
 class Authen extends StatefulWidget {
   const Authen({Key? key}) : super(key: key);
@@ -15,11 +16,37 @@ class _AuthenState extends State<Authen> {
     double size = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
-        //  child : Text('KhunTuu'),
-        child: Container( 
-          width: size*1.1,
-          child: ShowImage(path: MyConstant.image1)),
+        child: ListView(
+          children: [
+          buildImage(size), 
+          buildAppName()
+          ],
+        ),
       ),
+    );
+  }
+
+  Row buildAppName() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ShowTitle(
+          title: MyConstant.appName,
+          textStyle: MyConstant().h4Style(),
+        ),
+      ],
+    );
+  }
+
+  Row buildImage(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: size*0.6, 
+          child: ShowImage(path: MyConstant.image1)
+          ),
+      ],
     );
   }
 }
