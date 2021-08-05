@@ -18,17 +18,71 @@ class _AuthenState extends State<Authen> {
     double size = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
-        child: ListView(
-          children: [
-            buildImage(size),
-            buildAppName(),
-            buildUser(size),
-            buildPassword(
-              size,
-            )
-          ],
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).requestFocus(
+              FocusScopeNode()), //ต้องการเอาคีบอร์ดลง หรือหมายถึง ออกจากโฟกัส
+          behavior: HitTestBehavior.opaque,
+          child: ListView(
+            children: [
+              buildImage(size),
+              buildAppName(),
+              greeting(),
+              buildUser(size),
+              buildPassword(size),
+              buildLogin(size),
+              buildAccount(),
+            ],
+          ),
         ),
       ),
+    );
+  }
+
+  Row greeting() {
+    return Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(margin: EdgeInsets.symmetric(vertical: 16),
+                  child: ShowTitle(
+                    title: "Welcome!!",
+                    textStyle: MyConstant().h1Style(),
+                  ),
+                ),
+              ],
+            );
+  }
+
+  Row buildAccount() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ShowTitle(
+            title: "Do not have an account?",
+            textStyle: MyConstant().h3Style()),
+        TextButton(
+          onPressed: () =>
+              Navigator.pushNamed(context, MyConstant.routeCreateAccount),
+          child: Text('Create Account'), //text ที่คลิกได้
+        ),
+      ],
+    );
+  }
+
+  Row buildLogin(double size) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(
+              vertical: 16), //ต้องการให้ button ห่างทั้งด้านบนด้านล่าง
+          width: size * 0.6,
+          child: ElevatedButton(
+            style: MyConstant().myButtonStyle(),
+            onPressed: () {},
+            child: Text('Login'),
+          ),
+        ),
+      ],
     );
   }
 
@@ -38,7 +92,7 @@ class _AuthenState extends State<Authen> {
       children: [
         Container(
           margin: EdgeInsets.only(top: 16),
-          width: size * 0.6,
+          width: size * 0.7,
           child: TextFormField(
             decoration: InputDecoration(
               labelStyle: MyConstant().h3Style(),
@@ -68,7 +122,7 @@ class _AuthenState extends State<Authen> {
       children: [
         Container(
           margin: EdgeInsets.only(top: 16),
-          width: size * 0.6,
+          width: size * 0.7,
           child: TextFormField(
             obscureText: statusRedEye,
             decoration: InputDecoration(
